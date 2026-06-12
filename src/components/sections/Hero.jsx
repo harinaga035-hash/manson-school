@@ -42,13 +42,13 @@ export function Hero() {
       <div className={s.inner}>
         {/* Left Side: Premium Editorial Content */}
         <div className={s.contentSide}>
-          {/* Top Badge: Hyderabad's 1st B-School • Admissions Open 2026 */}
+          {/* Top Badge: HYDERABAD'S Best B-SCHOOL • Admissions Open 2026 */}
           <div className={s.badge}>
             <div className={s.badgeStarIcon}>
               <Star size={12} fill="currentColor" />
             </div>
             <span className={s.badgeText}>
-              HYDERABAD'S 1ST B-SCHOOL <span className={s.badgeDot}>•</span> ADMISSIONS OPEN 2026
+              HYDERABAD'S Best B-SCHOOL <span className={s.badgeDot}>•</span> ADMISSIONS OPEN 2026
             </span>
           </div>
 

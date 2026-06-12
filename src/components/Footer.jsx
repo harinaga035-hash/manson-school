@@ -19,7 +19,7 @@ export function Footer() {
               </span>
             </div>
             <p className={s.tagline}>
-              Hyderabad's 1st B-School — shaping ambitious students into industry leaders through
+              HYDERABAD'S Best B-SCHOOL — shaping ambitious students into industry leaders through
               mentorship, rigour and real-world business exposure.
             </p>
           </div>
