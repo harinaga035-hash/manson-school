@@ -178,6 +178,64 @@ p {
   animation: msbFadeUp 700ms var(--ease) forwards;
 }
 
+
+/* =========================================================
+   MSB Modern Floating Feature Cards Animation
+   ========================================================= */
+
+@keyframes msbFloatingCard {
+  0% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(1, 68, 33, 0.06), 0 4px 12px rgba(12, 22, 18, 0.01);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  }
+}
+
+/* Target feature and highlight cards to float continuously */
+[class*="card" i]:has([class*="cardTitle" i]),
+[class*="card" i]:has([class*="iconWrap" i]),
+[class*="hCard" i] {
+  animation: msbFloatingCard 6s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+/* Stagger floating delays to create a premium waves pattern */
+[class*="card" i]:has([class*="cardTitle" i]):nth-child(3n+1),
+[class*="card" i]:has([class*="iconWrap" i]):nth-child(3n+1),
+[class*="hCard" i]:nth-child(3n+1) {
+  animation-delay: 0s;
+}
+[class*="card" i]:has([class*="cardTitle" i]):nth-child(3n+2),
+[class*="card" i]:has([class*="iconWrap" i]):nth-child(3n+2),
+[class*="hCard" i]:nth-child(3n+2) {
+  animation-delay: 1.5s;
+}
+[class*="card" i]:has([class*="cardTitle" i]):nth-child(3n+3),
+[class*="card" i]:has([class*="iconWrap" i]):nth-child(3n+3),
+[class*="hCard" i]:nth-child(3n+3) {
+  animation-delay: 3s;
+}
+
+/* Interactive hover response (pause float and elevate slightly higher) */
+@media (hover: hover) {
+  [class*="card" i]:has([class*="cardTitle" i]):hover,
+  [class*="card" i]:has([class*="iconWrap" i]):hover,
+  [class*="hCard" i]:hover {
+    animation-play-state: paused;
+    transform: translateY(-12px) !important;
+    box-shadow: 0 24px 48px rgba(1, 68, 33, 0.1) !important;
+    border-color: rgba(201, 162, 39, 0.3) !important;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -86,7 +86,7 @@ export function Hero() {
       {/* Floating Statistics Card */}
       <div className={s.stats}>
         <div className={s.statsInner}>
-          <Stat value={92} suffix="%" label="Placement Rate" icon={UserCheck} immediate={true} />
+          <Stat value={98} suffix="%" label="Placement Rate" icon={UserCheck} immediate={true} />
           <div className={s.statsDivider} />
           <Stat
             value={11}

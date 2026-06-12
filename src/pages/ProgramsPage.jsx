@@ -36,7 +36,7 @@ export function ProgramsPage() {
 
         {/* Academic Degrees */}
         <h2 className={s.sectionHeader}>Degree Programs</h2>
-        <section className={s.grid3} style={{ marginBottom: "40px" }}>
+        <section className={s.grid4} style={{ marginBottom: "40px" }}>
           <Link
             to="/programs/bba"
             className={s.card}
@@ -65,6 +65,21 @@ export function ProgramsPage() {
             <p className={s.listText}>
               Specialized commerce knowledge with an emphasis on corporate accounting, financial
               acumen, versatile business career paths, and an adaptable global perspective.
+            </p>
+          </Link>
+          <Link
+            to="/programs/bcom-analytics"
+            className={s.card}
+            id="bcom-analytics"
+            style={{ textDecoration: "none", color: "inherit", display: "block" }}
+          >
+            <span className={s.badgeGreen}>Undergraduate</span>
+            <h3 className={s.sectionHeader} style={{ fontSize: "20px", marginBottom: "16px" }}>
+              B.Com (Analytics)
+            </h3>
+            <p className={s.listText}>
+              Integrates traditional commerce subjects with modern data analytics, SQL, Python,
+              and business intelligence tools for data-backed corporate decision-making.
             </p>
           </Link>
           <Link

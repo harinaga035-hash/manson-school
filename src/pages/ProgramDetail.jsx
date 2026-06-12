@@ -29,6 +29,7 @@ export function ProgramDetail() {
   }, [programId]);
 
   const program = PROGRAMS_DATA[programId];
+  const isMbaProgram = programId && programId.startsWith("mba");
 
   // Default admission steps if program-specific ones are not defined
   const defaultAdmissionSteps = [
@@ -112,6 +113,33 @@ export function ProgramDetail() {
               </p>
             </section>
 
+            {/* Best For (if specialization) */}
+            {program.bestFor && (
+              <section className={s.card} id="best-for" style={{ borderLeft: "4px solid #c9a227" }}>
+                <h2 className={s.sectionHeader}>Best For</h2>
+                <p className={s.listText} style={{ fontSize: "16px", fontWeight: "600", color: "#0b3d2e" }}>
+                  {program.bestFor}
+                </p>
+              </section>
+            )}
+
+            {/* Certifications Included (if specialization) */}
+            {program.certifications && (
+              <section className={s.card} id="certifications">
+                <h2 className={s.sectionHeader}>Certifications Included</h2>
+                <p className={s.listText} style={{ marginBottom: "16px" }}>
+                  This program integrates several prestigious industry certifications to enhance your professional profile:
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                  {program.certifications.map((cert, i) => (
+                    <span key={i} className={s.badgeGold} style={{ fontSize: "13px", padding: "6px 12px", borderRadius: "8px", margin: 0 }}>
+                      {cert}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* Key Highlights */}
             <section className={s.card} id="highlights">
               <h2 className={s.sectionHeader}>Key Highlights</h2>
@@ -125,41 +153,7 @@ export function ProgramDetail() {
               </div>
             </section>
 
-            {/* Curriculum structure */}
-            <section className={s.card} id="curriculum">
-              <h2 className={s.sectionHeader}>Curriculum Structure</h2>
-              <p className={s.listText} style={{ marginBottom: "20px" }}>
-                Click on each semester or module block below to view the courses and papers covered under this program curriculum.
-              </p>
-              <div className={sd.curriculumAccordion}>
-                {program.curriculum.map((sem, index) => {
-                  const isOpen = !!openSemesters[index];
-                  return (
-                    <div className={sd.accordionItem} key={index}>
-                      <button
-                        className={`${sd.accordionHeader} ${isOpen ? sd.accordionHeaderActive : ""}`}
-                        onClick={() => toggleSemester(index)}
-                      >
-                        <span>{sem.semester}</span>
-                        <ChevronDown size={18} className={sd.accordionIcon} />
-                      </button>
-                      {isOpen && (
-                        <div className={sd.accordionContent}>
-                          <ul className={sd.courseList}>
-                            {sem.courses.map((course, cIdx) => (
-                              <li className={sd.courseItem} key={cIdx}>
-                                <div className={sd.courseDot} />
-                                <span>{course}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
+
 
             {/* Learning Outcomes */}
             <section className={s.card} id="outcomes">
@@ -174,11 +168,15 @@ export function ProgramDetail() {
               </div>
             </section>
 
-            {/* Career Opportunities */}
+            {/* Placement Roles & Career Opportunities */}
             <section className={s.card} id="careers">
-              <h2 className={s.sectionHeader}>Career Opportunities</h2>
+              <h2 className={s.sectionHeader}>Placement Roles & Career Opportunities</h2>
+              
+              <h3 style={{ fontSize: "16px", fontWeight: "700", color: "#0b3d2e", marginBottom: "12px", borderBottom: "1px solid rgba(12, 22, 18, 0.05)", paddingBottom: "8px" }}>
+                Placement Roles
+              </h3>
               <p className={s.listText} style={{ marginBottom: "20px" }}>
-                Graduates of the {program.shortName} program are highly sought-after in both consulting firms and global MNCs. Potential professional roles include:
+                Potential placement roles for graduates of the {program.shortName} program include:
               </p>
               <div className={s.grid2} style={{ margin: "0 0 24px 0" }}>
                 {program.careers.map((role, i) => (
@@ -201,6 +199,13 @@ export function ProgramDetail() {
                   </div>
                 ))}
               </div>
+
+              <h3 style={{ fontSize: "16px", fontWeight: "700", color: "#0b3d2e", marginBottom: "12px", marginTop: "32px", borderBottom: "1px solid rgba(12, 22, 18, 0.05)", paddingBottom: "8px" }}>
+                Career Opportunities
+              </h3>
+              <p className={s.listText} style={{ marginBottom: "20px" }}>
+                Graduates of the {program.shortName} program are highly sought-after in major corporate ecosystems, startup sectors, consulting firms, and global MNCs. Diverse career opportunities are available across multiple sectors matching this specialization.
+              </p>
             </section>
 
             {/* Placement Support */}
@@ -259,6 +264,44 @@ export function ProgramDetail() {
                 ))}
               </div>
             </section>
+
+            {/* Why Choose MBA at Manson School of Business */}
+            {isMbaProgram && (
+              <section className={s.card} style={{ border: "1px solid rgba(201, 162, 39, 0.25)", background: "#faf8f4" }}>
+                <h2 className={s.sectionHeader}>Why Choose MBA at Manson School of Business</h2>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: "16px",
+                  marginTop: "8px"
+                }}>
+                  {[
+                    "Industry-Oriented MBA Curriculum",
+                    "Certifications Along with MBA Degree",
+                    "Placement & Internship Assistance",
+                    "Corporate Exposure & Live Projects",
+                    "Leadership & Personality Development",
+                    "Industry Expert Sessions",
+                    "Entrepreneurial & Startup Ecosystem",
+                    "Soft Skills & Communication Training"
+                  ].map((point, index) => (
+                    <div key={index} style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      background: "#ffffff",
+                      padding: "12px 16px",
+                      borderRadius: "8px",
+                      border: "1px solid rgba(12, 22, 18, 0.05)",
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.01)"
+                    }}>
+                      <CheckCircle2 size={16} style={{ color: "#0b3d2e", flexShrink: 0 }} />
+                      <span style={{ fontSize: "13.5px", fontWeight: "600", color: "#0c1612" }}>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Admission Process */}
             <section className={s.card} id="admission-process">

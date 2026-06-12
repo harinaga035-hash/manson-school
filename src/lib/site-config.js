@@ -10,11 +10,11 @@ export const site = {
     "Hello, I would like to know more about admissions at Manson School of Business.",
   email: "info@mansoncoe.com",
   placementsEmail: "placements@mansoncoe.com",
-  address: "6-3-1219/24, Uma Nagar, Kundanbagh, Begumpet, Hyderabad 500016",
+  address: "Street No. 4, Uma Nagar, Kundanbagh Colony, Begumpet, Hyderabad - 500 016",
   brochureUrl: "/brochure/msb-prospectus-2026.pdf",
 };
 
-export const courses = ["BBA", "MBA", "B.Com"];
+export const courses = ["BBA", "MBA", "B.Com", "B.Com (Analytics)"];
 
 export const navLinks = [
   { label: "Home", to: "/" },

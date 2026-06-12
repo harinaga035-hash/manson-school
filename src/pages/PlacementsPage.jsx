@@ -4,6 +4,10 @@ import { useCounter } from "../hooks/useCounter";
 import { Award, Briefcase, TrendingUp, Users, Send } from "lucide-react";
 import { site } from "../lib/site-config";
 
+import placementGroupImg from "@/assets/placement-group.jpg";
+import placementIndividual1Img from "@/assets/placement-individual-1.jpg";
+import placementIndividual2Img from "@/assets/placement-individual-2.jpg";
+
 function Stat({ value, suffix, prefix, label, icon: Icon }) {
   const { ref, value: n } = useCounter(value, 1800, true);
   return (
@@ -80,6 +84,11 @@ export function PlacementsPage() {
     "Infosys",
     "Capgemini",
     "Accenture",
+    "Nestle",
+    "Justdial",
+    "Sears",
+    "Reliance",
+    "GMR Group",
   ];
 
   return (
@@ -157,6 +166,155 @@ export function PlacementsPage() {
                 {rec}
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Placement Success Stories - Bento Grid Layout */}
+        <h2 className={s.sectionHeader} style={{ marginBottom: "24px" }}>
+          Placement Celebrations & Success Stories
+        </h2>
+        <section className={s.card} style={{ marginBottom: "40px", padding: "32px" }}>
+          <div className={s.splitGrid} style={{ gap: "28px" }}>
+            {/* Left Card: Group Offer Letter Celebration */}
+            <div
+              style={{
+                background: "#ffffff",
+                border: "1px solid rgba(201, 162, 39, 0.2)",
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(11, 61, 46, 0.03)",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <img
+                src={placementGroupImg}
+                alt="Placement Offer Letters Celebration"
+                style={{
+                  width: "100%",
+                  height: "280px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "700",
+                    color: "#c9a227",
+                    textTransform: "uppercase",
+                    display: "block",
+                    marginBottom: "6px",
+                    letterSpacing: "0.05em"
+                  }}
+                >
+                  On-Campus Placements
+                </span>
+                <h4 style={{ fontSize: "18px", fontWeight: "700", color: "#0b3d2e", margin: "0 0 8px 0" }}>
+                  MNC Selection Drive Success
+                </h4>
+                <p style={{ fontSize: "13.5px", color: "#555", margin: 0, lineHeight: "1.6" }}>
+                  Scholars proudly celebrating their successful recruitment selections and holding their job offer folders during the placement drive.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Side: Stacked Individual Student Success Cards */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              {/* Individual 1 */}
+              <div
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid rgba(201, 162, 39, 0.2)",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  display: "grid",
+                  gridTemplateColumns: "130px 1fr",
+                  boxShadow: "0 10px 30px rgba(11, 61, 46, 0.03)",
+                }}
+              >
+                <img
+                  src={placementIndividual1Img}
+                  alt="Student Success Story"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    minHeight: "140px",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+                <div style={{ padding: "20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      fontWeight: "700",
+                      color: "#c9a227",
+                      textTransform: "uppercase",
+                      display: "block",
+                      marginBottom: "4px",
+                      letterSpacing: "0.05em"
+                    }}
+                  >
+                    Placed Scholar
+                  </span>
+                  <h4 style={{ fontSize: "16px", fontWeight: "700", color: "#0b3d2e", margin: "0 0 6px 0" }}>
+                    Corporate Ready Graduate
+                  </h4>
+                  <p style={{ fontSize: "13px", color: "#555", margin: 0, lineHeight: "1.5" }}>
+                    A Manson graduate holding corporate credentials and celebrating a career start in finance.
+                  </p>
+                </div>
+              </div>
+
+              {/* Individual 2 */}
+              <div
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid rgba(201, 162, 39, 0.2)",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  display: "grid",
+                  gridTemplateColumns: "130px 1fr",
+                  boxShadow: "0 10px 30px rgba(11, 61, 46, 0.03)",
+                }}
+              >
+                <img
+                  src={placementIndividual2Img}
+                  alt="Graduate Placement Offer"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    minHeight: "140px",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+                <div style={{ padding: "20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      fontWeight: "700",
+                      color: "#c9a227",
+                      textTransform: "uppercase",
+                      display: "block",
+                      marginBottom: "4px",
+                      letterSpacing: "0.05em"
+                    }}
+                  >
+                    Placed Scholar
+                  </span>
+                  <h4 style={{ fontSize: "16px", fontWeight: "700", color: "#0b3d2e", margin: "0 0 6px 0" }}>
+                    Executive Position Success
+                  </h4>
+                  <p style={{ fontSize: "13px", color: "#555", margin: 0, lineHeight: "1.5" }}>
+                    Manson scholar holding selection credentials and securing placement in a premier business solutions firm.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

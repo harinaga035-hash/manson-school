@@ -39,7 +39,7 @@ export function AdmissionsPage() {
         >
           <span className={s.badgeGold}>Enrollment Open</span>
           <h2 className={s.sectionHeader} style={{ marginBlock: "8px 16px" }}>
-            BBA | MBA | B.Com Admissions Are Open For 2026
+            BBA | MBA | B.Com | B.Com (Analytics) Admissions Are Open For 2026
           </h2>
           <p
             className={s.listText}
@@ -90,6 +90,15 @@ export function AdmissionsPage() {
                 <td>
                   10+2 / Intermediate or equivalent from a recognized board with
                   Commerce/Maths/Arts/Science.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>B.Com (Analytics)</strong>
+                </td>
+                <td>3 Years</td>
+                <td>
+                  10+2 / Intermediate or equivalent from a recognized board with Commerce/Maths/Arts/Science.
                 </td>
               </tr>
               <tr>

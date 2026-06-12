@@ -11,6 +11,8 @@ import { Home } from "./pages/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { ProgramsPage } from "./pages/ProgramsPage";
 import { ProgramDetail } from "./pages/ProgramDetail";
+import { MbaProgramsOffered } from "./pages/MbaProgramsOffered";
+import { BbaProgramsOffered } from "./pages/BbaProgramsOffered";
 import { AdmissionsPage } from "./pages/AdmissionsPage";
 import { PlacementsPage } from "./pages/PlacementsPage";
 import { FacultyPage } from "./pages/FacultyPage";
@@ -42,6 +44,8 @@ function MainAppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/programs" element={<ProgramsPage />} />
+        <Route path="/programs/mba" element={<MbaProgramsOffered />} />
+        <Route path="/programs/bba" element={<BbaProgramsOffered />} />
         <Route path="/programs/:programId" element={<ProgramDetail />} />
         <Route path="/admissions" element={<AdmissionsPage />} />
         <Route path="/placements" element={<PlacementsPage />} />

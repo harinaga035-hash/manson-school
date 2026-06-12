@@ -65,7 +65,7 @@ export function ContactUs() {
           <h1 className={s.pageTitle}>Contact Us</h1>
         </header>
 
-        <section className={s.grid2} style={{ marginBottom: "48px" }}>
+        <section className={s.splitGrid} style={{ marginBottom: "48px" }}>
           {/* Contact Details */}
           <div className={s.card} style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
             <div>
@@ -113,18 +113,6 @@ export function ContactUs() {
                   </span>
                 </div>
               </div>
-          {/* Map Location */}
-          <div className={s.mapContainer}>
-            <iframe
-              title="Manson College Location"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
 
               <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
                 <div
@@ -167,7 +155,7 @@ export function ContactUs() {
                     +91 80745 12062
                   </a>
                   <a
-                    href="tel:7075589946"
+                    href="tel:7674899445"
                     style={{
                       fontSize: "14.5px",
                       fontWeight: "700",
@@ -175,7 +163,7 @@ export function ContactUs() {
                       display: "block",
                     }}
                   >
-                    +91 70755 89946
+                    +91 76748 99445
                   </a>
                   <a
                     href="tel:6301133645"
@@ -243,6 +231,19 @@ export function ContactUs() {
                     {site.placementsEmail}
                   </a>
                 </div>
+              </div>
+
+              {/* Map Location */}
+              <div className={s.mapContainer} style={{ marginTop: "16px" }}>
+                <iframe
+                  title="Manson College Location"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -376,6 +377,7 @@ export function ContactUs() {
                   >
                     <option value="BBA">BBA</option>
                     <option value="BCom">B.Com</option>
+                    <option value="BCom (Analytics)">B.Com (Analytics)</option>
                     <option value="MBA">MBA</option>
                   </select>
                 </div>

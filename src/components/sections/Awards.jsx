@@ -3,6 +3,11 @@ import s from "./Awards.module.css";
 const awards = [
   {
     year: "2024",
+    title: "Beyond IIM B-School Survey — Top 100",
+    body: "Recognised by Higher Education Review for exceptional academic expertise, capability to adapt to the evolution of the educational field, and transformational impact on students' careers.",
+  },
+  {
+    year: "2024",
     title: "Certificate of Appreciation Award",
     body: "Recognised for sustained impact in business education and the institution's contribution to shaping future business leaders.",
   },

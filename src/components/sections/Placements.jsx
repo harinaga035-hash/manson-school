@@ -51,6 +51,30 @@ const recruiters = [
     name: "Wipro",
     url: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg",
   },
+  {
+    name: "Nestle",
+    url: "https://upload.wikimedia.org/wikipedia/commons/2/22/Nestle_textlogo.svg",
+  },
+  {
+    name: "Justdial",
+    url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Justdial_Logo.svg",
+  },
+  {
+    name: "Sears",
+    url: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sears_Logo_2010.svg",
+  },
+  {
+    name: "Reliance",
+    url: "https://upload.wikimedia.org/wikipedia/commons/8/87/Reliance_Industries_Logo.svg",
+  },
+  {
+    name: "GMR Group",
+    url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/GMR_Group_%28logo%29.svg",
+  },
+  {
+    name: "Genpact",
+    url: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Genpact_logo.svg",
+  },
 ];
 
 const highlights = [
@@ -158,7 +182,7 @@ export function Placements() {
         </header>
 
         <div className={s.statsGrid}>
-          <Stat value={92} suffix="%" label="Placement Assistance" />
+          <Stat value={98} suffix="%" label="Placement Assistance" />
           <Stat value={11} suffix=" LPA" label="Highest Package" />
           <Stat value={6.5} suffix=" LPA" label="Average Package" />
           <Stat value={11} suffix="+" label="Recruiting Partners" />

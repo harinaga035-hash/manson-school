@@ -23,10 +23,10 @@ const programs = [
     duration: "2 Years",
     eligibility: "Graduate in any stream",
     points: [
-      "Specializations: Marketing, Finance, HR & Analytics",
-      "Integrated certifications in Business & HR Analytics",
-      "Weekly executive speaker series & mentorship",
-      "Direct placement assistance with leading MNC recruiters",
+      "10 future-ready specializations including AI, Analytics, FinTech, and IB",
+      "Industry-aligned certifications (Google, Power BI, SQL, Six Sigma, etc.)",
+      "Corporate exposure & placement-focused training",
+      "Direct internship assistance with leading multinational partners",
     ],
   },
   {

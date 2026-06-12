@@ -10,8 +10,8 @@ const highlights = [
     body: "Awarded for industry‑aligned curriculum, faculty calibre and consistent placement outcomes year on year.",
   },
   {
-    title: "Certificate of Appreciation Award 2024",
-    body: "Recognised for sustained impact in business education and the institution's contribution to shaping future business leaders.",
+    title: "Beyond IIM B-School Survey — Top 100",
+    body: "Recognised among the top 100 business schools in India by Higher Education Review in 2024.",
   },
   {
     title: "Excellence in Industry Engagement",
