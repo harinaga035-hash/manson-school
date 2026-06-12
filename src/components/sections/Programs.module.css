@@ -39,6 +39,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+@keyframes msbProgramFloat {
+  0%, 100% { transform: translateY(0px); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+  50%       { transform: translateY(-10px); box-shadow: 0 24px 48px rgba(1,68,33,0.1), 0 6px 14px rgba(12,22,18,0.04); }
+}
+
 .card {
   padding: 40px 32px 32px;
   background: var(--surface);
@@ -46,15 +51,23 @@
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  transition:
-    transform var(--dur) var(--ease),
-    box-shadow var(--dur) var(--ease);
+  animation: msbProgramFloat 5s ease-in-out infinite;
+  will-change: transform, box-shadow;
   position: relative;
   overflow: hidden;
 }
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+.card:nth-child(3n+1) { animation-delay: 0s; }
+.card:nth-child(3n+2) { animation-delay: 1.2s; }
+.card:nth-child(3n+3) { animation-delay: 2.4s; }
+
+@media (hover: hover) {
+  .card:hover {
+    animation-play-state: paused;
+    transform: translateY(-16px) !important;
+    box-shadow: 0 32px 64px rgba(1, 68, 33, 0.14) !important;
+    border-color: rgba(201, 161, 74, 0.4) !important;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  }
 }
 .tag {
   display: inline-flex;

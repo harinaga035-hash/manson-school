@@ -38,15 +38,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+@keyframes msbWhyFloat {
+  0%, 100% { transform: translateY(0px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+  50%       { transform: translateY(-9px); box-shadow: 0 20px 40px rgba(1,68,33,0.09), 0 4px 10px rgba(12,22,18,0.03); }
+}
+
 .card {
   padding: 36px 32px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  transition:
-    transform var(--dur) var(--ease),
-    box-shadow var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
+  animation: msbWhyFloat 5.5s ease-in-out infinite;
+  will-change: transform, box-shadow;
   position: relative;
   overflow: hidden;
 }
@@ -62,13 +65,21 @@
   transform-origin: left;
   transition: transform 500ms var(--ease);
 }
-.card:hover {
-  transform: translateY(-6px);
-  border-color: transparent;
-  box-shadow: var(--shadow-lg);
-}
-.card:hover::before {
-  transform: scaleX(1);
+.card:nth-child(3n+1) { animation-delay: 0s; }
+.card:nth-child(3n+2) { animation-delay: 1.4s; }
+.card:nth-child(3n+3) { animation-delay: 2.8s; }
+
+@media (hover: hover) {
+  .card:hover {
+    animation-play-state: paused;
+    transform: translateY(-14px) !important;
+    box-shadow: 0 28px 56px rgba(1, 68, 33, 0.13) !important;
+    border-color: rgba(201, 161, 74, 0.35) !important;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  }
+  .card:hover::before {
+    transform: scaleX(1);
+  }
 }
 .iconWrap {
   width: 56px;
