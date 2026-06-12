@@ -11,7 +11,7 @@ export const site = {
   email: "info@mansoncoe.com",
   placementsEmail: "placements@mansoncoe.com",
   address: "Street No. 4, Uma Nagar, Kundanbagh Colony, Begumpet, Hyderabad - 500 016",
-  brochureUrl: "/brochure/msb-prospectus-2026.pdf",
+  brochureUrl: "/brochure/MSB-Prospectus-2026.pdf",
 };
 
 export const courses = ["BBA", "MBA", "B.Com", "B.Com (Analytics)"];
