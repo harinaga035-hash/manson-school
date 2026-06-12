@@ -2,6 +2,7 @@ import { ArrowRight, CalendarCheck, Download, Phone } from "lucide-react";
 import s from "./AdmissionsCTA.module.css";
 import { useModals } from "../ModalProvider";
 import { site } from "@/lib/site-config";
+import { trackLead } from "@/lib/submit-lead.functions";
 
 export function AdmissionsCTA() {
   const { open } = useModals();
@@ -26,7 +27,7 @@ export function AdmissionsCTA() {
           <button className={`${s.btn} ${s.btnGhost}`} onClick={() => open("brochure")}>
             <Download size={18} /> Download Brochure
           </button>
-          <a className={`${s.btn} ${s.btnGhost}`} href={`tel:${site.phoneTel}`}>
+          <a className={`${s.btn} ${s.btnGhost}`} href={`tel:${site.phoneTel}`} onClick={() => trackLead("call")}>
             <Phone size={18} /> Contact Admissions
           </a>
         </div>

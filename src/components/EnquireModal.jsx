@@ -12,9 +12,11 @@ export function EnquireModal({ onClose }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setError(null);
-    const d = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const d = new FormData(form);
     const payload = {
       type: "enquiry",
+      source: "Enquiry Form",
       name: String(d.get("name") || "").trim(),
       email: String(d.get("email") || "").trim(),
       phone: String(d.get("phone") || "").trim(),
@@ -28,6 +30,7 @@ export function EnquireModal({ onClose }) {
     setLoading(true);
     try {
       await submitLead({ data: payload });
+      form.reset();
       setDone(true);
     } catch (err) {
       console.error(err);

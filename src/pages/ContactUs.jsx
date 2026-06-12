@@ -29,7 +29,8 @@ export function ContactUs() {
     setLoading(true);
     try {
       const payload = {
-        type: "enquiry",
+        type: "contact",
+        source: "Contact Form",
         name: String(formData.name || "").trim(),
         email: String(formData.email || "").trim(),
         phone: String(formData.phone || "").trim(),

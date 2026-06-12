@@ -2,6 +2,7 @@ import { FileText, Phone, MessageSquare } from "lucide-react";
 import s from "./FloatingPanel.module.css";
 import { site } from "@/lib/site-config";
 import { useModals } from "./ModalProvider";
+import { trackLead } from "@/lib/submit-lead.functions";
 
 const waHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.whatsappMessage)}`;
 
@@ -26,7 +27,12 @@ export function FloatingPanel() {
             Brochure
           </span>
         </button>
-        <a className={s.btn} href={`tel:${site.phoneTel}`} aria-label={`Call ${site.phoneDisplay}`}>
+        <a
+          className={s.btn}
+          href={`tel:${site.phoneTel}`}
+          aria-label={`Call ${site.phoneDisplay}`}
+          onClick={() => trackLead("call")}
+        >
           <div className={s.iconPhone}>
             <Phone size={20} />
           </div>
@@ -44,6 +50,7 @@ export function FloatingPanel() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
+          onClick={() => trackLead("whatsapp")}
         >
           <div className={s.iconWhatsapp}>
             <WhatsAppIcon />

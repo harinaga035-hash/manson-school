@@ -12,9 +12,11 @@ export function BrochureModal({ onClose }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setError(null);
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const payload = {
       type: "brochure",
+      source: "Download Brochure",
       name: String(data.get("name") || "").trim(),
       email: String(data.get("email") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
@@ -28,6 +30,7 @@ export function BrochureModal({ onClose }) {
     setLoading(true);
     try {
       await submitLead({ data: payload });
+      form.reset();
       setDone(true);
       // trigger brochure download
       const a = document.createElement("a");

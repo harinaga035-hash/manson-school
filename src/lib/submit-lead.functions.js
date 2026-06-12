@@ -1,56 +1,95 @@
-import { z } from "zod";
+// =========================================================
+// MSB Lead Submission — Google Apps Script endpoint
+// All leads route to the same Google Sheet.
+// =========================================================
 
-const LeadSchema = z.object({
-  type: z.enum(["brochure", "enquiry"]),
-  name: z.string().trim().min(1).max(80),
-  email: z.string().trim().email().max(120),
-  phone: z.string().trim().min(6).max(20),
-  course: z.string().trim().max(40).optional().default(""),
-  message: z.string().trim().max(1000).optional().default(""),
-});
+const GAS_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwj8RGXuoRlAI_CdQiAGaZ7yMBq7emUItODEgTPQ-a8xe8GvpA4ziSIJl2iDEwrb37hWw/exec";
 
+/**
+ * submitLead — sends lead data to the Google Apps Script endpoint.
+ *
+ * @param {{ data: object }} options
+ *   data must contain at least { type, name, email, phone }.
+ *   `source` may be passed directly; otherwise it is derived from `type`.
+ *
+ * Source values written to the sheet:
+ *   "Enquiry Form" | "Download Brochure" | "Apply Now" |
+ *   "WhatsApp"     | "Call Now"          | "Contact Form"
+ */
 export async function submitLead({ data }) {
-  // Validate schema
-  LeadSchema.parse(data);
+  // Resolve source label
+  const sourceMap = {
+    enquiry: "Enquiry Form",
+    brochure: "Download Brochure",
+    apply: "Apply Now",
+    whatsapp: "WhatsApp",
+    call: "Call Now",
+    contact: "Contact Form",
+  };
 
-  const sheetId = import.meta.env.VITE_MSB_SHEET_ID;
-  const lovableKey = import.meta.env.VITE_LOVABLE_API_KEY;
-  const sheetsKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY;
+  const source = data.source || sourceMap[data.type] || data.type || "Unknown";
 
-  const row = [
-    new Date().toISOString(),
-    data.type,
-    data.name,
-    data.email,
-    data.phone,
-    data.course ?? "",
-    data.message ?? "",
-  ];
+  const payload = {
+    fullName: (data.name || data.fullName || "").trim(),
+    email: (data.email || "").trim(),
+    phone: (data.phone || "").trim(),
+    course: (data.course || "").trim(),
+    message: (data.message || "").trim(),
+    source,
+  };
 
-  // If Google Sheets connector + sheet id are configured, append the row.
-  if (sheetId && lovableKey && sheetsKey) {
-    try {
-      const url = `https://connector-gateway.lovable.dev/google_sheets/v4/spreadsheets/${sheetId}/values/Leads!A:G:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${lovableKey}`,
-          "X-Connection-Api-Key": sheetsKey,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ values: [row] }),
-      });
-      if (!res.ok) {
-        const body = await res.text();
-        console.error("[submitLead] sheets append failed", res.status, body);
-      }
-    } catch (e) {
-      console.error("[submitLead] sheets error", e);
+  // Basic client-side validation for form submissions
+  if (data.type !== "whatsapp" && data.type !== "call") {
+    if (!payload.fullName || !payload.email || !payload.phone) {
+      throw new Error("Please complete all required fields.");
     }
-  } else {
-    // Backend not yet wired — log so the lead is not silently dropped.
-    console.log("[submitLead] (no sheet configured)", row);
+  }
+
+  try {
+    // Google Apps Script requires no-cors mode for cross-origin POST.
+    // We use "no-cors" so the browser doesn't block, but we cannot read the response.
+    // The GAS endpoint must return 200 for this to succeed silently.
+    await fetch(GAS_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    // Network failure — surface to caller for error handling
+    console.error("[submitLead] network error", err);
+    throw err;
   }
 
   return { ok: true };
+}
+
+/**
+ * trackLead — fire-and-forget lead ping (WhatsApp, Call Now).
+ * No throw — errors are swallowed so the link still works.
+ */
+export function trackLead(type, extra = {}) {
+  const sourceMap = {
+    whatsapp: "WhatsApp",
+    call: "Call Now",
+  };
+
+  const payload = {
+    fullName: extra.name || "",
+    email: extra.email || "",
+    phone: extra.phone || "",
+    course: extra.course || "",
+    message: extra.message || "",
+    source: sourceMap[type] || type,
+  };
+
+  fetch(GAS_ENDPOINT, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }).catch((e) => console.warn("[trackLead] failed to ping", e));
 }

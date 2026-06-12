@@ -2,6 +2,7 @@ import { Download, MessageCircle, Phone, GraduationCap } from "lucide-react";
 import s from "./MobileActionBar.module.css";
 import { site } from "@/lib/site-config";
 import { useModals } from "./ModalProvider";
+import { trackLead } from "@/lib/submit-lead.functions";
 
 const waHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.whatsappMessage)}`;
 
@@ -9,11 +10,21 @@ export function MobileActionBar() {
   const { open } = useModals();
   return (
     <nav className={s.bar} aria-label="Quick actions">
-      <a className={s.item} href={`tel:${site.phoneTel}`}>
+      <a
+        className={s.item}
+        href={`tel:${site.phoneTel}`}
+        onClick={() => trackLead("call")}
+      >
         <Phone size={18} />
         <span>Call</span>
       </a>
-      <a className={s.item} href={waHref} target="_blank" rel="noopener noreferrer">
+      <a
+        className={s.item}
+        href={waHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackLead("whatsapp")}
+      >
         <MessageCircle size={18} />
         <span>WhatsApp</span>
       </a>

@@ -13,6 +13,7 @@ import s from "./Placements.module.css";
 import { useCounter } from "@/hooks/useCounter";
 import { useModals } from "../ModalProvider";
 import { site } from "@/lib/site-config";
+import { trackLead } from "@/lib/submit-lead.functions";
 import student1 from "@/assets/student-1.jpg";
 import student2 from "@/assets/student-2.jpg";
 import student3 from "@/assets/student-3.jpg";
@@ -272,7 +273,7 @@ export function Placements() {
             <button className={`${s.ctaBtn} ${s.ctaPrimary}`} onClick={() => open("brochure")}>
               <Download size={16} /> Placement Brochure
             </button>
-            <a className={`${s.ctaBtn} ${s.ctaGhost}`} href={`tel:${site.phoneTel}`}>
+            <a className={`${s.ctaBtn} ${s.ctaGhost}`} href={`tel:${site.phoneTel}`} onClick={() => trackLead("call")}>
               <Phone size={16} /> Talk to the Team
             </a>
             <button className={`${s.ctaBtn} ${s.ctaGhost}`} onClick={() => open("enquire")}>
