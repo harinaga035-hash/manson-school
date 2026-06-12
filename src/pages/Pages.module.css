@@ -58,40 +58,19 @@
 }
 
 /* Premium Card and Letterhead containers */
-@keyframes msbPageCardFloat {
-  0%, 100% { transform: translateY(0px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); }
-  50%       { transform: translateY(-7px); box-shadow: 0 20px 44px rgba(11, 61, 46, 0.07); }
-}
-
 .card {
   background: #ffffff;
   border: 1px solid rgba(12, 22, 18, 0.06);
   border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   padding: clamp(24px, 4vw, 40px);
   margin-bottom: 32px;
-  animation: msbPageCardFloat 6s ease-in-out infinite;
-  will-change: transform, box-shadow;
+  transition: transform var(--dur) var(--ease);
 }
 
-/* Stagger floating for grid children */
-.grid2 .card:nth-child(2n+1),
-.grid3 .card:nth-child(3n+1),
-.grid4 .card:nth-child(4n+1) { animation-delay: 0s; }
-.grid2 .card:nth-child(2n+2),
-.grid3 .card:nth-child(3n+2),
-.grid4 .card:nth-child(4n+2) { animation-delay: 1.2s; }
-.grid3 .card:nth-child(3n+3),
-.grid4 .card:nth-child(4n+3) { animation-delay: 2.4s; }
-.grid4 .card:nth-child(4n+4) { animation-delay: 3.6s; }
-
-@media (hover: hover) {
-  .card:hover {
-    animation-play-state: paused;
-    transform: translateY(-12px) !important;
-    box-shadow: 0 28px 56px rgba(11, 61, 46, 0.1) !important;
-    border-color: rgba(201, 162, 39, 0.3) !important;
-    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
-  }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(11, 61, 46, 0.04);
 }
 
 /* Frosted glass variant */
